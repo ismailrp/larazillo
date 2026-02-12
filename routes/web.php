@@ -13,3 +13,10 @@ Route::get('/', function () {
         'message' => 'Laravel 12 + Inertia + Vue'
     ]);
 });
+
+
+Route::get('/test-inertia', function () {
+    return Inertia::render('Test', [
+        'name' => 'Inertia OK'
+    ]);
+});
