@@ -2,10 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\IndexController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/index', [IndexController::class, 'index']);
+Route::get('/show', [IndexController::class, 'show']);
 
 
 Route::get('/', function () {

@@ -14,7 +14,7 @@ defineProps({
     <AppLayout>
     <h1 class="text-xl">Home</h1>
     <div class="text-red-500 text-3xl font-bold">
-  TEST TAILWIND MERAH
+  TEST TAILWIND MERAH AJAH
 </div>
   </AppLayout>
   </div>
