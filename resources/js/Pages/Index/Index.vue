@@ -1,9 +1,7 @@
 <template>
-  <div>
-	<div>Index</div>
-	<Link href="/show">Show</Link>
-  {{ message }}
-  </div>
+	<div>
+	<br>{{ message }}
+</div>
 </template>
 
 <script setup>
