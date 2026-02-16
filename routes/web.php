@@ -20,3 +20,5 @@ Route::get('/test-inertia', function () {
         'name' => 'Inertia OK'
     ]);
 });
+
+Route::resource('listing', \App\Http\Controllers\ListingController::class)->only(['index', 'show','create','store']);
