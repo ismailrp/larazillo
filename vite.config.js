@@ -1,20 +1,29 @@
-import { defineConfig } from 'vite';
-import laravel from 'laravel-vite-plugin';
-import tailwindcss from '@tailwindcss/vite';
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from "vite";
+import laravel from "laravel-vite-plugin";
+import tailwindcss from "@tailwindcss/vite";
+import vue from "@vitejs/plugin-vue";
+import path from "path";
 
 export default defineConfig({
     plugins: [
-    laravel({
-      input: ['resources/js/app.js', 'resources/css/app.css'],
-      refresh: true,
-    }),
-    vue(),
-    tailwindcss(),
-  ],
+        laravel({
+            input: ["resources/js/app.js", "resources/css/app.css"],
+            refresh: true,
+        }),
+        vue(),
+        tailwindcss(),
+    ],
+    resolve: {
+        alias: {
+            ziggy: path.resolve(
+                __dirname,
+                "node_modules/ziggy-js/dist/index.js",
+            ),
+        },
+    },
     server: {
         watch: {
-            ignored: ['**/storage/framework/views/**'],
+            ignored: ["**/storage/framework/views/**"],
         },
     },
 });

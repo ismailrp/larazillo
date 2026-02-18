@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="submit">
+    <form @submit.prevent="update">
         <div class="mb-4">
             <label for="beds" class="block text-sm font-medium text-gray-700"
                 >Beds</label
@@ -150,25 +150,28 @@
             type="submit"
             class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
         >
-            Create
+            Save
         </button>
     </form>
 </template>
 
 <script setup>
 import { useForm } from "@inertiajs/vue3";
+const props = defineProps({
+    listing: Object,
+});
 
 const form = useForm({
-    street: "",
-    street_nr: "",
-    code: "",
-    city: "",
-    beds: 0,
-    baths: 0,
-    area: 0,
-    price: 0,
+    street: props.listing.street,
+    street_nr: props.listing.street_nr,
+    code: props.listing.code,
+    city: props.listing.city,
+    beds: props.listing.beds,
+    baths: props.listing.baths,
+    area: props.listing.area,
+    price: props.listing.price,
 });
-const submit = () => {
-    form.post("/listing");
+const update = () => {
+    form.put(route("listing.update", props.listing.id));
 };
 </script>
