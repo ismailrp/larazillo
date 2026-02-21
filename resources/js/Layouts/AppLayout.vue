@@ -1,15 +1,35 @@
 <template>
     <div>
-        <Link href="/listing/">Listings</Link> &nbsp;
-        <Link href="/listing/create">New Listing</Link>
-
-        <div
-            v-if="flashSuccess"
-            class="flex items-center p-4 mb-4 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800"
+        <header
+            class="border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900w-full"
         >
-            {{ flashSuccess }}
-        </div>
-        <slot>Default</slot>
+            <div class="container mx-auto">
+                <nav class="p-4 flex items-center justify-between">
+                    <div class="text-lg font-medium">
+                        <Link :href="route('listing.index')">Listings</Link>
+                    </div>
+                    <div class="text-xl font-bold text-indigo-600">
+                        <Link :href="route('listing.index')">LaraZillo</Link>
+                    </div>
+                    <div>
+                        <Link
+                            :href="route('listing.create')"
+                            class="btn-primary"
+                            >+ New Listing</Link
+                        >
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main class="container mx-auto p-4">
+            <div
+                v-if="flashSuccess"
+                class="mb-4 border-green-500 bg-green-100 p-2 rounded-md border"
+            >
+                {{ flashSuccess }}
+            </div>
+            <slot>Default</slot>
+        </main>
     </div>
 </template>
 <script setup>
@@ -18,8 +38,4 @@ import { computed } from "vue";
 
 const page = usePage();
 const flashSuccess = computed(() => page.props.flash.success);
-
-// import {ref} from "vue";
-// const timer = ref(0);
-// setInterval(() => timer.value++, 1000);
 </script>
